@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="gradient" />
+  <div class="topnav" id="myTopnav">
+    <img src="{% static 'media/logo2.png' %}" alt="logo" style="float: left;height:45px;margin :12px;">
+    <a href="{% url 'landing_page' %}" style="float: right;">Home</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+<form method="post">
+    {% csrf_token %}
+  <h1 >Login </h1>
+  <hr>
+  <div class="imgcontainer">
+    <img src="{% static 'media/33-338711_circle-user-icon-blue-hd-png-download.png' %}" alt="Avatar" class="avatar">
+  </div>
+  <div class="container">
+      <label for="{{ form.username.id_for_label }}">Username</label>
+      <input type="text" id="username"  name="{{ form.username.html_name }}" placeholder="Username" required>
+       {{ form.username.errors }}
+       <label for="{{ form.password.id_for_label }}">password</label>
+       <input type="password" name="{{ form.password.html_name }}" placeholder="Enter Password" id="psw"required>
+        {{ form.password.errors }}
+     <button type="submit" value="Login"> Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+  <div class="container" style="background-color:#ecececc0">
+    <button type="button" class="cancelbtn"><a href="{% url 'landing_page' %}" style="text-decoration: none;color:white">Cancel</a></button>
+  </div>
+</form>
+<script src="{% static 'js/login.js' %}"></script>
+</body>
+
+</html>
