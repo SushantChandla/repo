@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'homeapp',
+    'history',
+    'profilepage',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +59,7 @@ ROOT_URLCONF = 'xplore.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR,os.path.join(BASE_DIR, 'homeapp','templates')],
+        'DIRS': [TEMPLATES_DIR,os.path.join(BASE_DIR, 'homeapp','templates'),os.path.join(BASE_DIR, 'history','templates'),os.path.join(BASE_DIR, 'profilepage','templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,6 +127,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticroots")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR,'homeapp', "static"),
+    os.path.join(BASE_DIR,'history', "static"),
+    os.path.join(BASE_DIR,'profilepage', "static"),
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

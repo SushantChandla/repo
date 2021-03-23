@@ -1,0 +1,146 @@
+body {
+margin:0;
+}
+
+
+.topnav {
+margin:0;
+overflow: hidden;
+background-color: rgb(255, 255, 255);
+border-bottom: 1px solid rgba(168, 138, 4, 0.123);
+}
+
+.topnav a {
+float: left;
+width: 150px;
+display: block;
+color: black;
+text-align: center;
+padding: 25px 16px;
+text-decoration: none;
+font-size: 16px;
+}
+
+.topnav a:hover {
+color:rgb(255, 255, 255);
+background-color: rgba(209, 187, 91, 0.89);
+}
+
+.topnav a.active {
+background-color: #8c9bcc;
+color: white;
+}
+
+.topnav .icon {
+display: none;
+}
+
+@media screen and (max-width: 1000px) {
+.topnav a  {display: none;}
+.topnav a.icon {
+float: right;
+display: block;
+}
+}
+
+@media screen and (max-width: 1000px) {
+.topnav.responsive {position: relative;}
+.topnav.responsive .icon {
+top: 0;
+right: 0;
+position: relative;
+}
+.topnav.responsive a {
+width: 100%;
+float: none;
+display: block;
+text-align:center;
+}
+}
+* {
+box-sizing: border-box;
+}
+
+form.example input[type=text] {
+padding: 10px;
+font-size: 17px;
+border: 1px solid grey;
+float: left;
+width: 80%;
+background: #B8B8B8;
+margin-top:20px;
+}
+
+form.example button {
+margin-top:20px;
+
+float: left;
+width: 20%;
+padding: 10px;
+background: #F79862;
+color: white;
+font-size: 17px;
+border: 1px solid grey;
+border-left: none;
+cursor: pointer;
+}
+
+form.example button:hover {
+background: #0b7dda;
+}
+
+form.example::after {
+content: "";
+clear: both;
+display: table;
+}
+.column {
+float: center;
+width: 100%;
+padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+.column {
+width: 100%;
+display: block;
+margin-bottom: 20px;
+}
+}
+
+/* Style the counter cards */
+.card {
+margin-top: 20px;
+margin-left: 30px;
+margin-right: 30px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+padding: 16px;
+text-align: left;
+background-color: #f1f1f1;
+
+}
+.card-text {
+word-wrap: break-word;
+}
+
+
+
+div.card
+{
+word-wrap: break-word;
+}
+
+.table-class {
+    text-align: left;
+}

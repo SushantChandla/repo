@@ -21,5 +21,6 @@ class UserProfile(models.Model):
     pin_code = models.IntegerField(null=False)
     balance = models.IntegerField(null=True)
 
+
     def __str__(self):
         return self.name
