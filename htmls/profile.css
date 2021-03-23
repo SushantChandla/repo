@@ -1,0 +1,339 @@
+body {
+margin:0;
+
+background:rgba(211, 191, 102, 0.336);
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  display: block;
+  transition: top 0.3s;
+  border-bottom: 1px solid rgba(168, 138, 4, 0.123);
+  font-family: 'Courier New', monospace;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 30px 35px;
+  text-decoration: none;
+  font-size: 15px;
+
+}
+
+.topnav a:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgba(209, 187, 91, 0.89);
+}
+
+.topnav a.active {
+  background-color: #8c9bcc;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .topnav a {
+    display: none;
+  }
+
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .topnav.responsive {
+    position: relative;
+  }
+
+  .topnav.responsive .icon {
+    top: 0;
+    right: 0;
+    position: relative;
+  }
+
+  .topnav.responsive a {
+    width: 100%;
+    float: none;
+    display: block;
+    text-align: center;
+  }
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    background-color: #f1f1f1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.title {
+    color: grey;
+    font-size: 1px;
+}
+
+button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 4px;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    cursor: pointer;
+    width: 80%;
+    font-size: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: .5px solid rgba(255, 255, 255, 0.527);
+}
+
+b {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+
+button:hover,
+b:hover {
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    font-family: arial;
+    font-size: 20px;
+    left: 0;
+    background-color: #f1f1f1;
+    color: black;
+    overflow-x: hidden;
+    transition: 0.5s;
+    margin: 0;
+}
+
+.sidenav a {
+    text-decoration: none;
+    font-size: 20px;
+    padding: 2px;
+    color: #818181;
+    display: block;
+    transition: 0.5s;
+}
+
+.sidenav a.active {
+    background-color: #919ecc;
+    color: #f1f1f1;
+
+}
+
+.sidenav a:hover {
+    background-color: rgba(255, 255, 255, 0.801);
+    color: rgba(0, 0, 0, 0.801);
+    transition: 0.3s;
+    border-bottom: 1px #aab3d3;
+}
+
+a.closebtn:hover {
+    background-color: #f1f1f1;
+    border-bottom: none;
+    color: black;
+    font-size: 25px;
+
+}
+
+#main {
+    transition: .5s;
+    padding: 16px;
+    background-color: #aab3d3;
+    box-shadow: 0px 4px 4px -3px rgba(119, 119, 119, 0.2);
+    overflow-x: hidden;
+}
+
+.horibox {
+    background-color: whitesmoke;
+    padding: 10px;
+    width: auto;
+    height: 220px;
+    box-shadow: 0px 4px 4px -3px rgba(119, 119, 119, 0.2);
+}
+
+img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+}
+
+.image-cropper {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.horibox .image-cropper {
+    margin: 0;
+    width: 200px;
+    height: 200px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+#main openbttn {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+}
+
+td {
+    padding: 4px;
+    background-color: whitesmoke;
+}
+
+/* Create three equal columns that floats next to each other */
+.column1 {
+
+    float: left;
+    width: 16%;
+    height: 220px;
+    /* Should be removed. Only for demonstration */
+}
+
+.column2 {
+    float: left;
+    width: 28%;
+    height: 220px;
+    /* Should be removed. Only for demonstration */
+}
+
+.column2 p {
+    font-size: 15px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.342);
+}
+
+.column2 h1 {
+    margin: 0px;
+    padding-top: 15%;
+    font-size: 36px;
+    text-align: center;
+    color: rgb(66, 66, 66);
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after,
+.row_details:after {
+    content: "";
+    display: table;
+    clear: both;
+    position: relative;
+}
+.horibox .image-cropper label img:hover{
+   opacity:0.6;
+}
+
+@media screen and (max-height: 900px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .topnav{
+        display: none;
+    }
+    .sidenav {
+        width: 100%;
+    }
+
+    .horibox {
+        margin-left: auto;
+        margin-right: auto;
+        width: 220px;
+    }
+
+    .horibox .image-cropper {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .column1 {
+        width: 100%;
+        background-color: whitesmoke;
+    }
+
+    .column2,
+    .column {
+
+        width: 100%;
+    }
+
+    .column2 p,
+    .column2 h1 {
+        text-align: center;
+        color: rgb(58, 58, 58);
+    }
+}
+
+@media screen and (min-width: 900px) {
+    a.closebtn {
+        display: none;
+    }
+    .sidenav{
+        display: none;
+    }
+    #main{
+        display: none;
+    }
+}
+
+.label-td {
+    width: 120px;
+    color: #7a68cae0;
+    font-size: 80%;
+}
+
+.stock-label-td {
+    width: 120px;
+    color: #7a68cae0;
+    font-size: 80%;
+}
+
+</style>

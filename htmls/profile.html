@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="profile.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="topnav" id="myTopnav">
+        <img src="logo2.png" alt="logo" style="float: left;height:45px;margin :10px;">
+        <a href="#" >Home</a>
+        <a href="#" >History</a>
+        <a href="#" style="float:right;">Logout</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+
+        </a>
+      </div>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" style="margin:10px 10px 0 0 ; float:right;"
+            onclick="closeNav()">⤬</a>
+            <img src="logo2.png" alt="logo" style="float: left;height:45px;margin :10px;">
+        <div class="image-cropper" id="output" style=" margin-top:115px;">
+            <img src="guy.jpg" class="rounded" />
+        </div>
+        <h4 style="margin:10px;">{{name}}</h4>
+
+        <a class="active" href="#">Profile</a>
+        <a href="#">History</a>
+        <a href="#">Home</a>
+    </div>
+
+    <div id="main">
+        <openbttn onclick="openNav()" style="font-size:20px;">&#9776;</openbttn>
+    </div>
+    <div class="row" style="margin-top:10px;">
+        <div class="column1">
+            <div class="horibox">
+                <div class="image-cropper">
+                    <input type="file" accept="image/*" name="image" id="file" style="display:none;">
+                    <label for="file" style="cursor: pointer;"> <img src="guy.jpg" class="rounded"/></label>
+                </div>
+
+            </div>
+        </div>
+        <div class="column2"
+            style="background-color:whitesmoke;box-shadow: 0px 4px 4px -3px rgba(119, 119, 119, 0.2); ">
+            <h1>{{name}}</h1>
+            <p>Username: {{username}}<br>✆91-{{mobile_number}} <br>✉{{email}}</p>
+        </div>
+
+        <div class="column2" style="background-color:whitesmoke;box-shadow: 0px 4px 4px -3px rgba(119, 119, 119, 0.2);">
+            <p style="padding-top:12%;color:rgb(77, 77, 77);font-size:23px;">Available Balance<br><b
+                    style="font-size: 18px; color:#7a68cae0">₹{{balance}}</b></p>
+        </div>
+        <div class="column2" style="background-color:whitesmoke;box-shadow: 0px 4px 4px -3px rgba(119, 119, 119, 0.2);">
+            <p style="padding-top:12%;color:rgb(77, 77, 77);font-size:23px;">Session Remaining<br><b
+                    style="font-size: 18px; color:#7a68cae0">96 days</b></p>
+        </div>
+    </div>
+
+    <div class="row_details"
+        style="height:100%;background-color:whitesmoke;box-shadow: 0px 4px 4px -3px rgba(119, 119, 119, 0.2);">
+        <div class="per_nav" style="background-color: rgba(0, 0, 0, 0.87);color: rgb(255, 255, 255);">
+            <h3 style="padding:3px;">Personal Details</h3>
+        </div>
+        <div class="column">
+            <p style="text-align: center;background-color: #bbc5e9;color: rgb(68, 14, 14);padding:4px;">User Info</p>
+            <table class="table-class">
+                <tr>
+                    <td class="label-td">Username</td>
+                    <td>{{username}}</td>
+                </tr>
+                <tr>
+                    <td class="label-td">Name</td>
+                    <td>{{name}}</td>
+                </tr>
+                <tr>
+                    <td class="label-td">DOB</td>
+                    <td>{{date_of_birth}}</td>
+                </tr>
+                <tr>
+                    <td class="label-td">Age</td>
+                    <td>{{age}}</td>
+                </tr>
+                <tr>
+                    <td class="label-td">Gender</td>
+                    <td>{{gender}}</td>
+                </tr>
+                <tr>
+                    <td class="label-td">Profession</td>
+                    <td>{{profession}}</td>
+                </tr>
+
+                <tr>
+                    <td class="label-td">Mobile</td>
+                    <td>{{mobile_number}}</td>
+                </tr>
+
+                <tr>
+                    <td class="label-td">Email</td>
+                    <td>{{email}}</td>
+                </tr>
+                <tr>
+                    <td class="label-td">Address</td>
+                    <td>{{address}}</td>
+                </tr>
+                <tr>
+                    <td class="label-td">City</td>
+                    <td>{{city}}</td>
+                </tr>
+                <tr>
+                    <td class="label-td">State</td>
+                    <td>{{state}}</td>
+                </tr>
+                <tr>
+                    <td class="label-td">Pincode</td>
+                    <td>{{pin_code}}</td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="column">
+            <p style="text-align: center;background-color:#bbc5e9;color: rgb(68, 14, 14);padding:4px;">Balance Info</p>
+            <table>
+                <tr>
+                    <td class="stock-label-td">Stock A</td>
+                    <td class="stock-td">250</td>
+                </tr>
+                <tr>
+                    <td class="stock-label-td">Stock B</td>
+                    <td class="stock-td">250</td>
+                </tr>
+                <tr>
+                    <td class="stock-label-td">Stock C</td>
+                    <td class="stock-td">250</td>
+                </tr>
+                <tr>
+                    <td class="stock-label-td">Stock D</td>
+                    <td class="stock-td">250</td>
+                </tr>
+                <tr>
+                    <td class="stock-label-td">Stock E</td>
+                    <td class="stock-td">250</td>
+                </tr>
+                <tr>
+                    <td class="stock-label-td">Stock F</td>
+                    <td class="stock-td">250</td>
+                </tr>
+                <tr>
+                    <td class="stock-label-td">Stock G</td>
+                    <td class="stock-td">250</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+ <script src="profile.js"></script>
+    <script>
+        function openNav() {
+                document.getElementById("mySidenav").style.width = "100%";
+
+        }
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
+    <script>
+        var loadFile = function (event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+</body>
+
+</html>
