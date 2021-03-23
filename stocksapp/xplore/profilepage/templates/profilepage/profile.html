@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_block %}
+<link rel="stylesheet" href="{% static "profilepage/profile.css" %}">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% endblock %}
+
+{% block body_block %}
+
+
+<div class="container">
+
+<div class="row container justify-content-between" style="margin-top:10px;width: 100%;">
+    <div class="col" style="flex: 1;">
+        <img src="{% static "history/guy.jpg" %}" style="width: 250px;height: 200px;" class="rounded"/>
+    </div>
+    <div class="col"
+        style="flex:1;background-color:whitesmoke;box-shadow: 0px 4px 4px -3px rgba(119, 119, 119, 0.2); ">
+        <h1>{{name}}</h1>
+        <p>Username: {{username}}<br>✆91-{{mobile_number}} <br>✉{{email}}</p>
+    </div>
+
+    <div class="col" style="flex:1;background-color:whitesmoke;box-shadow: 0px 4px 4px -3px rgba(119, 119, 119, 0.2);">
+        <p style="padding-top:12%;color:rgb(77, 77, 77);font-size:23px;">Available Balance<br><b
+                style="font-size: 18px; color:#7a68cae0">₹{{balance}}</b></p>
+    </div>
+    <div class="col" style="flex:1;background-color:whitesmoke;box-shadow: 0px 4px 4px -3px rgba(119, 119, 119, 0.2);">
+        <p style="padding-top:12%;color:rgb(77, 77, 77);font-size:23px;">Session Remaining<br><b
+                style="font-size: 18px; color:#7a68cae0">96 days</b></p>
+    </div>
+</div>
+
+
+
+
+ <div class="per_nav" style="background-color: rgba(0, 0, 0, 0.87);color: rgb(255, 255, 255);">
+        <h3 style="padding:3px;">Personal Details</h3>
+    </div>
+<div class="row container justify-content-between"
+    style="height:100%;background-color:whitesmoke;box-shadow: 0px 4px 4px -3px rgba(119, 119, 119, 0.2);">
+   
+    <div class="col">
+        <p style="text-align: center;background-color: #bbc5e9;color: rgb(68, 14, 14);padding:4px;">User Info</p>
+        <table class="table-class">
+            <tr>
+                <td class="label-td">Username</td>
+                <td>username}}</td>
+            </tr>
+            <tr>
+                <td class="label-td">Name</td>
+                <td>{{name}}</td>
+            </tr>
+            <tr>
+                <td class="label-td">DOB</td>
+                <td>{{date_of_birth}}</td>
+            </tr>
+            <tr>
+                <td class="label-td">Age</td>
+                <td>{{age}}</td>
+            </tr>
+            <tr>
+                <td class="label-td">Gender</td>
+                <td>{{gender}}</td>
+            </tr>
+            <tr>
+                <td class="label-td">Profession</td>
+                <td>{{profession}}</td>
+            </tr>
+
+            <tr>
+                <td class="label-td">Mobile</td>
+                <td>{{mobile_number}}</td>
+            </tr>
+
+            <tr>
+                <td class="label-td">Email</td>
+                <td>{{email}}</td>
+            </tr>
+            <tr>
+                <td class="label-td">Address</td>
+                <td>{{address}}</td>
+            </tr>
+            <tr>
+                <td class="label-td">City</td>
+                <td>{{city}}</td>
+            </tr>
+            <tr>
+                <td class="label-td">State</td>
+                <td>{{state}}</td>
+            </tr>
+            <tr>
+                <td class="label-td">Pincode</td>
+                <td>{{pin_code}}</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="col">
+        <p style="text-align: center;background-color:#bbc5e9;color: rgb(68, 14, 14);padding:4px;">Balance Info</p>
+        <table>
+            <tr>
+                <td class="stock-label-td">Stock A</td>
+                <td class="stock-td">250</td>
+            </tr>
+            <tr>
+                <td class="stock-label-td">Stock B</td>
+                <td class="stock-td">250</td>
+            </tr>
+            <tr>
+                <td class="stock-label-td">Stock C</td>
+                <td class="stock-td">250</td>
+            </tr>
+            <tr>
+                <td class="stock-label-td">Stock D</td>
+                <td class="stock-td">250</td>
+            </tr>
+            <tr>
+                <td class="stock-label-td">Stock E</td>
+                <td class="stock-td">250</td>
+            </tr>
+            <tr>
+                <td class="stock-label-td">Stock F</td>
+                <td class="stock-td">250</td>
+            </tr>
+            <tr>
+                <td class="stock-label-td">Stock G</td>
+                <td class="stock-td">250</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+</div>
+<!-- <script src="{% static "profilepage/profile.js" %}"></script>
+<script>
+    function openNav() {
+            document.getElementById("mySidenav").style.width = "100%";
+
+    }
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+</script>
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script> -->
+{% endblock %}

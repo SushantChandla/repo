@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_block %}
+<link rel="stylesheet" href="{% static "homeapp/index.css" %}">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+{% endblock %}
+
+{% block body_block %}
+
+<!-- Modal send the stock which is clicked -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+          <!-- <p>Select Stock</p> -->
+          <label for="cars">Select stock:</label>
+          <select id="cars" name="cars">
+            <option value="volvo">Wheat</option>
+            <option value="saab">Rice</option>
+            <option value="fiat">Rice</option>
+            <option value="audi">Rice</option>
+          </select>
+        </div>
+        <form action="/action_page.php">
+          <label for="fname">Enter Quantity</label>
+          <input type="text" id="fname" name="fname"><br><br>
+          <a href="#" type="submit" class="btn btn-primary container"   data-toggle="modal" data-target="#myModal"  style="background-color: #46c23a;"  >Buy</a>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-between">
+        <div class="col container" style="flex:2.5">
+            <div  style="color: rgb(75, 75, 75);
+            font-size: 17px;
+            font-weight: 600;
+          letter-spacing: 0px;
+          color: rgb(86, 86, 86);margin-top: 10px;margin-bottom: 10px;">
+                TOP GAINERS
+            </div>
+            <div class="container card cardCustom">
+                    <div class="row justify-content-between">
+                        <div class="col">
+                <div class="card-body">
+                  <h5 class="card-title">Wheat</h5>
+                  <p class="card-text">68237.34<span style="color: #46c23a;">(+26.01%)</span></p>
+                  
+                  <!-- <a href="#" class="btn btn-primary">Button</a> -->
+                </div>
+            </div>
+            <div class="col">
+                <div class="card-body">
+                <img src="{% static "homeapp/graph.svg" %}" style="height: 60px;">
+            </div>
+            </div>
+            <div class="col">
+                <div class="card-body">
+                    <p class="card-title" style="color: rgba(75, 75, 75, 0.897);">Stock Available 20.00</p>
+                <a href="#" class="btn btn-primary container"  data-toggle="modal" data-target="#myModal"  style="background-color: #46c23a;"  >Buy</a>
+            </div>
+            </div>
+
+            </div>
+              </div>
+              <div class="container card cardCustom">
+                <div class="row justify-content-between">
+                    <div class="col">
+            <div class="card-body">
+              <h5 class="card-title">Wheat</h5>
+              <p class="card-text">68237.34<span style="color: #46c23a;">(+26.01%)</span></p>
+              
+              <!-- <a href="#" class="btn btn-primary">Button</a> -->
+            </div>
+        </div>
+        <div class="col">
+            <div class="card-body">
+            <img src="{% static "homeapp/graph.svg" %}" style="height: 60px;">
+        </div>
+        </div>
+        <div class="col">
+            <div class="card-body">
+                <p class="card-title" style="color: rgba(75, 75, 75, 0.897);">Stock Available 20.00</p>
+            <a href="#" class="btn btn-primary container"   data-toggle="modal" data-target="#myModal"  style="background-color: #46c23a;"  >Buy</a>
+        </div>
+        </div>
+
+        </div>
+          </div>
+          <div class="container card cardCustom">
+            <div class="row justify-content-between">
+                <div class="col">
+        <div class="card-body">
+          <h5 class="card-title">Wheat</h5>
+          <p class="card-text">68237.34<span style="color: #46c23a;">(+26.01%)</span></p>
+          
+          <!-- <a href="#" class="btn btn-primary">Button</a> -->
+        </div>
+    </div>
+    <div class="col">
+        <div class="card-body">
+        <img src="{% static "homeapp/graph.svg" %}" style="height: 60px;">
+    </div>
+    </div>
+    <div class="col">
+        <div class="card-body">
+            <p class="card-title" style="color: rgba(75, 75, 75, 0.897);">Stock Available 20.00</p>
+        <a href="#" class="btn btn-primary container"   data-toggle="modal" data-target="#myModal"  style="background-color: #46c23a;"  >Buy</a>
+    </div>
+    </div>
+
+    </div>
+      </div>
+
+      <div  style="color: rgb(75, 75, 75);
+            font-size: 17px;
+            font-weight: 600;
+          letter-spacing: 0px;
+          color: rgb(86, 86, 86);margin-top: 30px;margin-bottom: 20px;">
+                All STOCKS
+            </div>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Crop</th>
+            <th scope="col">Market Price</th>
+            <th scope="col">Stocks Available</th>
+            <th scope="col"></th>
+            <th scope="col">Buy stocks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Wheat</td>
+            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
+            <td>112317.00</td>
+            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
+            <td><a href="#" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Wheat</td>
+            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
+            <td>13227.00</td>
+            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
+            <td><a href="#" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Rice</td>
+            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
+            <td>12338.00</td>
+            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
+            <td><a href="#" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Rice</td>
+            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
+            <td>1232.00</td>
+            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
+            <td><a href="#" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Rice</td>
+            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
+            <td>17123.00</td>
+            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
+            <td><a href="#" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Rice</td>
+            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
+            <td>17123.00</td>
+            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
+            <td><a href="#" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Rice</td>
+            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
+            <td>17123.00</td>
+            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
+            <td><a href="#" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Rice</td>
+            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
+            <td>17123.00</td>
+            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
+            <td><a href="#" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Rice</td>
+            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
+            <td>17123.00</td>
+            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
+            <td><a href="#" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+        </div>
+        <div class="col">
+            <div class="card cardCustom">
+                <div class="card-body">
+                  <!-- <h5 class="card-title" style="text-align: center;">History</h5> -->
+                  <p class="card-text" style="text-align: center;">Season Ends in 10 months</p>
+                </div>
+              </div>
+            <div class="card cardCustom">
+                <img class="card-img-top" src="https://img.freepik.com/free-vector/online-shopping-mobile-phone-ecommerce-market-flat-illustration-with-small-people_135170-27.jpg?size=626&ext=jpg" alt="Card image cap">
+                <div class="card-body">
+                  <!-- <h5 class="card-title" style="text-align: center;">History</h5> -->
+                  <p class="card-text" style="text-align: center;">Buy new stock before season ends or Sell stock.</p>
+                  <a href="#" class="btn btn-primary container"  data-toggle="modal" data-target="#myModal" style="background-color: #46c23a;" >Buy / Sell</a>
+                </div>
+              </div>
+              <div class="card cardCustom">
+                <img class="card-img-top" src="https://media.istockphoto.com/vectors/open-banking-platform-concept-vector-illustration-vector-id1169397219?k=6&m=1169397219&s=612x612&w=0&h=gTpdNTwdezBUed4TuYYfGB8ZruzPsiIwjEdiNmhEG-U=" alt="Card image cap">
+                <div class="card-body">
+                  <!-- <h5 class="card-title" style="text-align: center;">History</h5> -->
+                  <p class="card-text" style="text-align: center;">Check your past transactions</p>
+                  <a href="#" class="btn btn-primary container" style="background-color: #46c23a;"  >History</a>
+                </div>
+              </div>
+              <!-- <div class="card cardCustom">
+                <div class="card-body">
+                  <p class="card-text" style="text-align: center;">New to Stocks?</p>
+                  <a href="#" class="btn btn-primary container" style="background-color: #46c23a;"  >Buy</a>
+                </div>
+              </div> -->
+        </div>
+      </div>
+</div>
+{% endblock %}
