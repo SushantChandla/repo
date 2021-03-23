@@ -3,7 +3,6 @@ from django.db import models
 from django.utils import timezone
 
 from django.contrib.auth.models import User
-from blockchainpart.models import Chain
 
 class UserProfile(models.Model):
 
@@ -21,7 +20,6 @@ class UserProfile(models.Model):
     state = models.CharField(max_length=200, null=False)
     pin_code = models.IntegerField(null=False)
     balance = models.IntegerField(null=True)
-    chain = models.ForeignKey(Chain, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
