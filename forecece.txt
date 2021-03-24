@@ -1,0 +1,24 @@
+{
+  "mnemonic": [
+    "hockey",
+    "shine",
+    "ethics",
+    "ostrich",
+    "scrub",
+    "shed",
+    "dragon",
+    "acquire",
+    "swear",
+    "render",
+    "relief",
+    "grace",
+    "olive",
+    "tower",
+    "swing"
+  ],
+  "secret": "db3f87c64f05d67b38e1d64c177308c1565115ab",
+  "amount": "124091391",
+  "pkh": "tz1MtMDiY2ugYquVq7xniAmAYrcU8CYqMRVd",
+  "password": "xidWOvehtT",
+  "email": "jqlviaee.oxghfdbb@tezos.example.org"
+}
