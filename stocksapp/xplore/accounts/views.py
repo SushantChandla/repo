@@ -12,6 +12,7 @@ from . import forms
 #from blockchainpart.forms import ChainCreateForm
 
 def SignUp(request):
+
     if request.method == 'POST':
         user_form = forms.UserCreateForm(data=request.POST)
         profile_form = forms.UserProfileForm(data=request.POST)
@@ -25,39 +26,12 @@ def SignUp(request):
             profile.user = user
             profile.save()
 
-            username = user_form.cleaned_data.get('username')
-            password = user_form.cleaned_data.get('password')
-
-            user = authenticate(username=username, password=password)
-            login(request, user)
-            return redirect('/')
+            return redirect('homeapp:homepage')
     else:
         user_form = forms.UserCreateForm()
         profile_form = forms.UserProfileForm()
 
-    return render (request, 'signup.html',{
+    return render (request, 'accounts/signup.html',{
         'user_form':user_form,
         'profile_form':profile_form,
     })
-
-def Login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = auth.authenticate(username=username,password=password)
-
-        if user is not None:
-            auth.login(request,user)
-            print("user found")
-            return redirect('/')
-
-        else :
-            return render(request,'login.html')
-            print("user not found")
-    else:
-        return render(request,'login.html')
-
-def Logout(request):
-    auth.logout(request)
-    redirect('/')

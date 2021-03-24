@@ -6,6 +6,6 @@ from . import views
 app_name = 'homeapp'
 
 urlpatterns = [
-    url('', views.HomePage, name="homepage"),
-    url('stockbuy', views.StockBuy, name="stockbuy"),
+    url('home/', views.HomePage, name="homepage"),
+    url('stockbuy/', views.StockBuy, name="stockbuy"),
 ]

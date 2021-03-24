@@ -13,7 +13,7 @@
 <body>
   <div class="topnav" id="myTopnav">
     <img src="{% static 'media/logo2.png' %}" alt="logo" style="float: left;height:45px;margin :12px;">
-    <a href="{% url 'homepage' %}" style="float: right;">Home</a>
+    <a href="{% url 'homeapp:homepage' %}" style="float: right;">Home</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
@@ -23,6 +23,9 @@
       {% csrf_token %}
     <div class="container">
       <h1>Register</h1>
+      <div style="text-align:center;">
+          <a href="{% url 'accounts:login' %}">or login here</a>
+      </div>
       <p>Please fill in this form to create an account.</p>
       <hr>
       <label for="{{ user_form.username.id_for_label }}">Username</label><br>
@@ -48,13 +51,6 @@
     </select>
     <label for="{{profile_form.profession.id_for_label}}">Profession</label>
     <input type="text" placeholder="Profession" name="{{profile_form.profession.html_name}}" id="profession">
-    <label for="{{profile_form.user_type.id_for_label}}">User type</label>
-      <select id="Usertype" name="{{profile_form.user_type.html_name}}">
-          <option value="shopkeeper" style="font-size:15px;border-right: none;color:rgba(97, 97, 97, 0.322);padding:3px;">
-            shopkeeper</option>
-          <option value="farmer" style="font-size:15px;border: none;color:rgba(97, 97, 97, 0.322);padding:3px;">farmer
-          </option>
-      </select>
       <label for="{{profile_form.address.id_for_label}}">Address</label>
       <input type="text" id="address" name="{{profile_form.address.html_name}}" placeholder="Address" required>
       <label for="{{profile_form.city.id_for_label}}">City</label>
@@ -63,15 +59,10 @@
       <input type="text" id="state" name="{{profile_form.state.html_name}}" placeholder="State" required>
       <label for="{{profile_form.pin_code.id_for_label}}">Pincode</label>
       <input type="number" id="pincode" name="{{profile_form.pin_code.html_name}}" placeholder="Pin Code"  required>
-      <label for="{{profile_form.balance.id_for_label}}">Balance</label>
-      <input type="number" id="balance" name="{{profile_form.balance.html_name}}" placeholder="Balance" required>
       <label for="{{profile_form.mobile_number.id_for_label}}">Mobile Number</label>
       <input type="tel" id="phone" name="{{profile_form.mobile_number.html_name}}" placeholder="Mobile Number" pattern="[0-9]{10}" maxlength="10" required>
-      <label for="{{profile_form.additional_mobile_number.id_for_label}}">Additional Mobile Number</label>
-      <input type="tel" id="aphone" name="{{profile_form.additional_mobile_number.html_name}}" placeholder="Additional Mobile Number" maxlength="10" pattern="[0-9]{10}">
-      <label for="{{user_form.password.id_for_label}}">Password</label>
+     <label for="{{user_form.password.id_for_label}}">Password</label>
       <input type="password" placeholder="Enter Password" name="{{user_form.password.html_name}}" id="psw" required>
-      {{chain_form}}
       <hr>
       <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
       <button type="submit" class="registerbtn">Register</button>

@@ -134,7 +134,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_REDIRECT_URL = 'customer:customer_home'
-LOGOUT_REDIRECT_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'homeapp:homepage'
+LOGOUT_REDIRECT_URL = 'homeapp:homepage'
 
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
