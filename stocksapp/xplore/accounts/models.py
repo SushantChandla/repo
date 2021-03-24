@@ -6,7 +6,9 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
 
-    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
+    username = models.CharField(max_length=255, null=False, unique=True)
+    email = models.EmailField(max_length=255, null=False, unique=True)
+    password = models.CharField(max_length=255, null=False, unique=True)
     name = models.CharField(max_length=200, null=False)
     date_of_birth = models.DateField(max_length=200, null=False)
     age = models.IntegerField(null=False)

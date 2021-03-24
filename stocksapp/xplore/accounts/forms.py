@@ -7,12 +7,16 @@ from . import models
 class UserCreateForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     class Meta:
-        fields = ("username", "email", "password")
-        model = User
+        fields = '__all__'
+        model = models.UserProfile
 
 
 class UserProfileForm (forms.ModelForm):
     class Meta:
         fields = '__all__'
-        exclude = ['user', 'chain']
+        model = models.UserProfile
+
+class UserLoginForm (forms.ModelForm):
+    class Meta:
+        fields = ("username", "password")
         model = models.UserProfile

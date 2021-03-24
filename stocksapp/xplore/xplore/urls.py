@@ -23,5 +23,6 @@ urlpatterns = [
     path('history',include('history.urls')),
     path('profile', include('profilepage.urls')),
     path('', include('homeapp.urls')),
+    path('accounts/', include('accounts.urls')),
    
 ]
