@@ -40,12 +40,7 @@
            </option>
       </select>
       <label for="{{profile_form.profession.id_for_label}}">Profession</label>
-        <select id="Usertype" name="{{profile_form.user_type.html_name}}">
-            <option value="shopkeeper" style="font-size:15px;border-right: none;color:rgba(97, 97, 97, 0.322);padding:3px;">
-              shopkeeper</option>
-            <option value="farmer" style="font-size:15px;border: none;color:rgba(97, 97, 97, 0.322);padding:3px;">farmer
-            </option>
-        </select>
+      <input type="text" placeholder="Profession" name="{{profile_form.profession.html_name}}" id="profession">
         <label for="{{profile_form.address.id_for_label}}">Address</label>
         <input type="text" id="address" name="{{profile_form.address.html_name}}" placeholder="Address" required>
         <label for="{{profile_form.city.id_for_label}}">City</label>
