@@ -26,7 +26,11 @@ def SignUp(request):
 
             profile = profile_form.save(commit=False)
             profile.user = user
+            profile.balance=5000
             profile.save()
+
+            user = authenticate(username=username, password=password)
+            login(request, user)
 
             return redirect('homeapp:homepage')
     else:

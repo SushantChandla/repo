@@ -26,7 +26,7 @@ SECRET_KEY = 'k+f(__p7^m$k2!t5=)!#7ou2%uo%nkry^9lmi9nf8ckd&zvu^-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['agrobits.pythonanywhere.com']
 
 
 # Application definition
