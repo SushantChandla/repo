@@ -7,5 +7,6 @@ app_name = 'homeapp'
 
 urlpatterns = [
     url('home/', views.HomePage, name="homepage"),
-    url('stockbuy/', views.StockBuy, name="stockbuy"),
+    # url('stockbuy/', views.StockBuy, name="stockbuy"),
 ]
+    

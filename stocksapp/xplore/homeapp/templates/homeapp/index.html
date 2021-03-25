@@ -23,14 +23,13 @@
       <div class="modal-body">
         <div>
           <!-- <p>Select Stock</p> -->
+          <form action="{% url 'homeapp:homepage' %}", method="POST", id = "stockbuyform">
           <label for="stocks">Select stock:</label>
-
-          <form action="/action_page.php", method="POST", id = "stockbuyform">
             {% csrf_token %}
           <select id="stocks" name="stocks", form="stockbuyform">
            
            {% for item in allOptions %}
-            <option name='option' value={{ item.stockId }}>{{ item.stockName }}</option>
+            <option name='stocks' value={{ item.stockId }}>{{ item.stockName }}</option>
 
            {% endfor %}
             {% comment %} <option value="StockA">StockA</option>
@@ -46,7 +45,7 @@
           <input type="text" id="fname" name="fname" type='number'><br><br>
           <label for="payment">Enter Payment Amount</label>
           <input type="text" id="payment" name="payment" type='number'><br><br>
-          <a href="{% url 'homeapp:stockbuy' %}" type="submit" class="btn btn-primary container"   data-toggle="modal" data-target="#myModal"  style="background-color: #46c23a;"  >Buy</a>
+          <button type="submit" value="submit" class="btn btn-primary container"   data-toggle="modal" data-target="#myModal"  style="background-color: #46c23a;"  >Buy</button>
         </form>
 
         <p>Trasation completion takes one mintue to complete</p>
@@ -89,7 +88,7 @@
             <div class="col">
                 <div class="card-body">
                     <p class="card-title" style="color: rgba(75, 75, 75, 0.897);">Stock Available {{ item.available }}</p>
-                <a href="{% url 'homeapp:stockbuy' %}" class="btn btn-primary container"  data-toggle="modal" data-target="#myModal"  style="background-color: #46c23a;"  >Buy</a>
+                <a  class="btn btn-primary container"  data-toggle="modal" data-target="#myModal"  style="background-color: #46c23a;"  >Buy</a>
             </div>
             </div>
 
@@ -173,7 +172,7 @@
             <td>{{ item.price }}<span style="color: #46c23a;">( {{ item.percent_increase }} %)</span></td>
             <td>{{ item.available }}</td>
             <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
-            <td><a href="{% url 'homeapp:stockbuy' %}" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
+            <td><a class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
             </td>
           </tr>
           {% endfor %}
@@ -194,7 +193,7 @@
                 <div class="card-body">
                   <!-- <h5 class="card-title" style="text-align: center;">History</h5> -->
                   <p class="card-text" style="text-align: center;">Buy new stock before season ends or Sell stock.</p>
-                  <a href="{% url 'homeapp:stockbuy' %}" class="btn btn-primary container"  data-toggle="modal" data-target="#myModal" style="background-color: #46c23a;" >Buy / Sell</a>
+                  <a  class="btn btn-primary container"  data-toggle="modal" data-target="#myModal" style="background-color: #46c23a;" >Buy / Sell</a>
                 </div>
               </div>
               <div class="card cardCustom">

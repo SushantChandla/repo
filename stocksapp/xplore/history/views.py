@@ -11,23 +11,24 @@ def UserHistory (request):
     user_name = request.user.username
     pyt =pytezos.using(key="edskRotpJzJHWX4zLsbuyfVnjeojJ3pmysGJEuXSvQWSvBqG1mS4x24TFjQhpiZQpKYNhzJT1DMfXbAE2YKVcuZE6fniECGeRB",shell="https://edonet.smartpy.io")
     contr=pyt.contract("KT1QNvidZC8e5U2UNnv72LUpDtoKfhzu1dge")
-    data =dict(contr.storage())
-    history={}
+    data =dict(contr.storage())['allTransaction']
+    print(data)
+    history=[]
     data_set=[]
     if user_name in data:
       history=data[user_name]
     for item in history:
-      stock = Stocktype.objects.filter(stockId=item['StockType'])
-      if stock.__len__> 0 :
+      stock = Stocktype.objects.filter(stockId=item['stockType'])
+      if len(stock)> 0 :
         stod=stock[0]
         data_set.append({
           'stockID': stod.stockId,
           'stockName':stod.stockName,
-          'price':abs(int(item['Price'])),
-          'to_from':item['To_from'],
-          'is_sold':int(item['Quantity'])>0 if False else True,
-          'quantity':abs(int(item['Quantity'])),
-          'time':item["Time"]
+          'price':abs(int(item['price'])),
+          'to_from':item['to_from'],
+          'is_sold':int(item['quantity'])>0 if False else True,
+          'quantity':abs(int(item['quantity'])),
+          'time':item["time"]
         })
     return render(request,'history/history.html',{'historyList':data_set})
  

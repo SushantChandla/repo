@@ -179,7 +179,7 @@
                        <tr>
                         <th scope="row">{{ forloop.counter }}</th>
                         <td>{{ item.stockName }}</td>
-                        <td><span style="color: #46c23a;">{{ item.Time }}</span></td>
+                        <td><span style="color: #46c23a;">{{ item.time }}</span></td>
                         <td>{{ item.to_from }}n</td>
                         <td>{{ item.quantity }}</td>
                         <td>Rs {{ item.price }}</td>
@@ -187,7 +187,7 @@
                         <td style="text-align: center;">Sold
                         </td>
                         {% else %}
-                         <td style="text-align: center;">Sold
+                         <td style="text-align: center;">BUY
                         </td>
                         {% endif %}
                       </tr>

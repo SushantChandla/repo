@@ -5,11 +5,34 @@ from django.contrib.auth import get_user_model
 from datetime import datetime
 from homeapp.models import OrgStocks,PriceChange,Stocktype
 from datetime import datetime
+from pytezos import pytezos
 #User = get_user_model()
 
 # Create your views here.
 
 def HomePage(request):
+    if request.method == 'POST':
+        if not request.user.is_authenticated:
+            return redirect('accounts/login.html')
+        username = request.user.username
+        stockid_in = request.POST.get('stocks')
+        print(stockid_in)
+        quantity = request.POST.get('fname')
+        quantity=int(quantity)
+        paymentAmount=request.POST.get("payment")
+        stockt=Stocktype.objects.get(stockId=stockid_in)
+        orData=OrgStocks.objects.get(stockType=stockt)
+        if(quantity<orData.stockAmount):
+            price = PriceChange.objects.filter(is_linked=stockt)
+            
+            pyt =pytezos.using(key="edskRotpJzJHWX4zLsbuyfVnjeojJ3pmysGJEuXSvQWSvBqG1mS4x24TFjQhpiZQpKYNhzJT1DMfXbAE2YKVcuZE6fniECGeRB",shell="https://edonet.smartpy.io")
+            contr=pyt.contract("KT1QNvidZC8e5U2UNnv72LUpDtoKfhzu1dge")
+            orData.stockAmount-=quantity
+            orData.save()
+            contr.default(price=int(paymentAmount),quantity=int(quantity),stockType=stockid_in,to_from="Organization",username=username).inject()
+            print("updaeyde")
+
+
     allorgStock=OrgStocks.objects.all()
     allorgData=[]
     for i in allorgStock:
@@ -37,36 +60,12 @@ def HomePage(request):
     alloptions=Stocktype.objects.all()
     return render(request, 'homeapp/index.html',{'allorgData':allorgData,'tops':allorgData[0:3],'allOptions':alloptions})
 
-def StockBuy(request):
-    if not request.user.is_authenticated:
-        return redirect('accounts/login.html')
-    else:
-        if request.method == 'POST':
-            username = request.user.username
-            stockid_in = request.option
-            quantity = request.fname
-            quantity=int(quantity)
-            stockt=Stocktype.objects.get(stockId=stockid_in)
-            orData=OrgStocks.objects.get(stockType=stockt)
+# def StockBuy(request):
+#     print("Hednkjedneakncka")
 
-            price = PriceChange.objects.filter(is_linked=stockt)
-            paymentAmount=request.payment
-            pyt =pytezos.using(key="edskRotpJzJHWX4zLsbuyfVnjeojJ3pmysGJEuXSvQWSvBqG1mS4x24TFjQhpiZQpKYNhzJT1DMfXbAE2YKVcuZE6fniECGeRB",shell="https://edonet.smartpy.io")
-            contr=pyt.contract("KT1QNvidZC8e5U2UNnv72LUpDtoKfhzu1dge")
-            
-            
-
-            contr.addTransaction(
-                username=username,
-                stockType=stockid_in,
-                price=paymentAmount,
-                quantity=quantity,
-                to_from=stockt.stockName+" Organization"
-            ).operation_group.sign().inject()
-
-            return redirect('homeapp:homepage')
-        else:
-            return redirect('homeapp:homepage')
+    
+    
+    
 
 
             # stockbuyform = StockBuyForm(data=request.POST)
