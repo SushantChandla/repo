@@ -11,6 +11,8 @@ from django.http import response
 from . import forms
 #from blockchainpart.forms import ChainCreateForm
 
+
+
 def SignUp(request):
 
     if request.method == 'POST':

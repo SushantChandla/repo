@@ -3,7 +3,6 @@ from django.contrib.auth.models import User , auth
 from django.contrib.auth import login, authenticate
 from django.contrib.auth import login, logout
 from pytezos import pytezos
-from accounts.models import UserProfile
 from homeapp.models import OrgStocks,PriceChange,Stocktype
 # Create your views here.
 
@@ -15,16 +14,15 @@ def ProfilePage(request):
         })
     return redirect('/')
 
+
 def CustomerProfile (request):
 
     if not request.user.is_authenticated:
         return redirect('accounts:login')
 
     username = request.user.username
-    pyt =pytezos.using(key="edskRotpJzJHWX4zLsbuyfVnjeojJ3pmysGJEuXSvQWSvBqG1mS4x24TFjQhpiZQpKYNhzJT1DMfXbAE2YKVcuZE6fniECGeRB",shell="https://edonet.smartpy.io")
-    contr=pyt.contract("KT1QNvidZC8e5U2UNnv72LUpDtoKfhzu1dge")
-    data =dict(contr.storage())
-    user_data=data['stocksTotal'][username]
+
+   
 
     if request.method == 'POST':
         if not request.user.is_authenticated:
@@ -35,20 +33,32 @@ def CustomerProfile (request):
         quantity = request.POST.get('fname')
         quantity=int(quantity)
         paymentAmount=request.POST.get("payment")
-        stockt=Stocktype.objects.get(stockId=stockid_in)
-        orData=OrgStocks.objects.filter(stockType=stockt)
-        if len(orData)>0:
-            orData=orData.first
-        if( stockid_in in user_data and quantity<=user_data[stockid_in]):
-            price = PriceChange.objects.filter(is_linked=stockt)
-            orData.stockAmount+=quantity
-            orData.save()
-            quantity*=-1
-            paymentAmount*=-1
-            contr.default(price=int(paymentAmount),quantity=quantity,stockType=stockid_in,to_from="Organization",username=username).inject()
-            print("updaeyde")
+        
+        pyt =pytezos.using(key="edskRotpJzJHWX4zLsbuyfVnjeojJ3pmysGJEuXSvQWSvBqG1mS4x24TFjQhpiZQpKYNhzJT1DMfXbAE2YKVcuZE6fniECGeRB",shell="https://edonet.smartpy.io")
+        contr=pyt.contract("KT1QNvidZC8e5U2UNnv72LUpDtoKfhzu1dge")
+        data =dict(contr.storage())['stocksTotal']
+        user_data={}
+        if username in data:
+            user_data=data[username]
+            
+            stockt=Stocktype.objects.get(stockId=stockid_in)
+            orData=OrgStocks.objects.filter(stockType=stockt)
+            if len(orData)>0:
+                orData=orData.first
+                if( stockid_in in user_data and quantity<=user_data[stockid_in]):
+                    price = PriceChange.objects.filter(is_linked=stockt)
+                    orData.stockAmount+=quantity
+                    orData.save()
+                    quantity*=-1
+                    paymentAmount*=-1
+                    contr.default(price=int(paymentAmount),quantity=quantity,stockType=stockid_in,to_from="Organization",username=username).inject()
+                    print("updaeyde")
+                else:
+                    print("cantDO")
+            else:
+                print("cantDo")   
         else:
-            print("cantDo")   
+            print("cantDo")
         # return error
 
 
@@ -66,7 +76,13 @@ def CustomerProfile (request):
     state =u.userprofile.state
     pin_code =u.userprofile.pin_code
     balance = u.userprofile.balance
+    pyt =pytezos.using(key="edskRotpJzJHWX4zLsbuyfVnjeojJ3pmysGJEuXSvQWSvBqG1mS4x24TFjQhpiZQpKYNhzJT1DMfXbAE2YKVcuZE6fniECGeRB",shell="https://edonet.smartpy.io")
+    contr=pyt.contract("KT1QNvidZC8e5U2UNnv72LUpDtoKfhzu1dge")
+    data =dict(contr.storage())
     
+    user_data={}
+    if username in data['stocksTotal']:
+        user_data=data['stocksTotal'][username]
 
     alloptions=Stocktype.objects.all()
     print(data)
