@@ -1,0 +1,24 @@
+{
+    "mnemonic": [
+      "extra",
+      "often",
+      "enlist",
+      "sense",
+      "problem",
+      "require",
+      "tiger",
+      "rich",
+      "wish",
+      "security",
+      "elegant",
+      "retire",
+      "defense",
+      "punch",
+      "ten"
+    ],
+    "secret": "7fd6b78170c6166c3b969ce0a7066ed55f6fc17e",
+    "amount": "34796320815",
+    "pkh": "tz1cHA8cUdNsd8VB4AexotvZsuB9uzAV82QS",
+    "password": "DF4oJWlXVI",
+    "email": "tdtrjovr.otihbvtt@tezos.example.org"
+  }

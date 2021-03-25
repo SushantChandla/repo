@@ -24,21 +24,32 @@
         <div>
           <!-- <p>Select Stock</p> -->
           <label for="stocks">Select stock:</label>
+
+          <form action="/action_page.php", method="POST", id = "stockbuyform">
+            {% csrf_token %}
           <select id="stocks" name="stocks", form="stockbuyform">
-            <option value="StockA">StockA</option>
+           
+           {% for item in allOptions %}
+            <option name='option' value={{ item.stockId }}>{{ item.stockName }}</option>
+
+           {% endfor %}
+            {% comment %} <option value="StockA">StockA</option>
             <option value="StockB">StockB</option>
             <option value="StockC">StockC</option>
             <option value="StockD">StockD</option>
             <option value="StockE">StockE</option>
             <option value="StockF">StockF</option>
-            <option value="StockG">StockG</option>
+            <option value="StockG">StockG</option> {% endcomment %}
           </select>
         </div>
-        <form action="/action_page.php", method="POST", id = "stockbuyform">
           <label for="fname">Enter Quantity</label>
-          <input type="text" id="fname" name="fname"><br><br>
-          <a href="{% url 'homeapp:homepage' %}" type="submit" class="btn btn-primary container"   data-toggle="modal" data-target="#myModal"  style="background-color: #46c23a;"  >Buy</a>
+          <input type="text" id="fname" name="fname" type='number'><br><br>
+          <label for="payment">Enter Payment Amount</label>
+          <input type="text" id="payment" name="payment" type='number'><br><br>
+          <a href="{% url 'homeapp:stockbuy' %}" type="submit" class="btn btn-primary container"   data-toggle="modal" data-target="#myModal"  style="background-color: #46c23a;"  >Buy</a>
         </form>
+
+        <p>Trasation completion takes one mintue to complete</p>
       </div>
 
       <div class="modal-footer">
@@ -59,12 +70,13 @@
           color: rgb(86, 86, 86);margin-top: 10px;margin-bottom: 10px;">
                 TOP GAINERS
             </div>
+            {% for item in tops %}
             <div class="container card cardCustom">
                     <div class="row justify-content-between">
                         <div class="col">
                 <div class="card-body">
-                  <h5 class="card-title">Wheat</h5>
-                  <p class="card-text">68237.34<span style="color: #46c23a;">(+26.01%)</span></p>
+                  <h5 class="card-title">{{ item.stock }}</h5>
+                  <p class="card-text">{{ item.price }}<span style="color: #46c23a;">({{ item.percent_increase }}%)</span></p>
                   
                   <!-- <a href="#" class="btn btn-primary">Button</a> -->
                 </div>
@@ -76,14 +88,16 @@
             </div>
             <div class="col">
                 <div class="card-body">
-                    <p class="card-title" style="color: rgba(75, 75, 75, 0.897);">Stock Available 20.00</p>
+                    <p class="card-title" style="color: rgba(75, 75, 75, 0.897);">Stock Available {{ item.available }}</p>
                 <a href="{% url 'homeapp:stockbuy' %}" class="btn btn-primary container"  data-toggle="modal" data-target="#myModal"  style="background-color: #46c23a;"  >Buy</a>
             </div>
             </div>
 
             </div>
               </div>
-              <div class="container card cardCustom">
+
+              {% endfor %}
+              {% comment %} <div class="container card cardCustom">
                 <div class="row justify-content-between">
                     <div class="col">
             <div class="card-body">
@@ -106,8 +120,8 @@
         </div>
 
         </div>
-          </div>
-          <div class="container card cardCustom">
+          </div> {% endcomment %}
+          {% comment %} <div class="container card cardCustom">
             <div class="row justify-content-between">
                 <div class="col">
         <div class="card-body">
@@ -130,14 +144,14 @@
     </div>
 
     </div>
-      </div>
+      </div> {% endcomment %}
 
       <div  style="color: rgb(75, 75, 75);
             font-size: 17px;
             font-weight: 600;
           letter-spacing: 0px;
           color: rgb(86, 86, 86);margin-top: 30px;margin-bottom: 20px;">
-                All STOCKS
+                All Organization STOCKS
             </div>
 
       <table class="table table-striped">
@@ -152,87 +166,17 @@
           </tr>
         </thead>
         <tbody>
+          {% for item in allorgData %}
           <tr>
-            <th scope="row">1</th>
-            <td>Wheat</td>
-            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
-            <td>112317.00</td>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ item.stock }}</td>
+            <td>{{ item.price }}<span style="color: #46c23a;">( {{ item.percent_increase }} %)</span></td>
+            <td>{{ item.available }}</td>
             <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
             <td><a href="{% url 'homeapp:stockbuy' %}" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
             </td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Wheat</td>
-            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
-            <td>13227.00</td>
-            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
-            <td><a href="{% url 'homeapp:stockbuy' %}" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Rice</td>
-            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
-            <td>12338.00</td>
-            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
-            <td><a href="{% url 'homeapp:stockbuy' %}" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Rice</td>
-            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
-            <td>1232.00</td>
-            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
-            <td><a href="{% url 'homeapp:stockbuy' %}" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Rice</td>
-            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
-            <td>17123.00</td>
-            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
-            <td><a href="{% url 'homeapp:stockbuy' %}" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Rice</td>
-            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
-            <td>17123.00</td>
-            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
-            <td><a href="{% url 'homeapp:stockbuy' %}" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Rice</td>
-            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
-            <td>17123.00</td>
-            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
-            <td><a href="{% url 'homeapp:stockbuy' %}" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Rice</td>
-            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
-            <td>17123.00</td>
-            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
-            <td><a href="{% url 'homeapp:stockbuy' %}" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Rice</td>
-            <td>68237.34<span style="color: #46c23a;">(+26.01%)</span></td>
-            <td>17123.00</td>
-            <td><img src="{% static "homeapp/graph.svg" %}" style="height: 20px;"></td>
-            <td><a href="{% url 'homeapp:stockbuy' %}" class="container"   data-toggle="modal" data-target="#myModal"  style="color: #46c23a;text-align: left;">BUY</a>
-            </td>
-          </tr>
+          {% endfor %}
         </tbody>
       </table>
 
@@ -258,8 +202,8 @@
                 <div class="card-body">
                   <!-- <h5 class="card-title" style="text-align: center;">History</h5> -->
                   <p class="card-text" style="text-align: center;">Check your past transactions</p>
-                  <a href="{% url 'history:buying_history' %}" class="btn btn-primary container" style="background-color: #46c23a;"  >Buying History</a>
-                  <a href="{% url 'history:selling_history' %}" class="btn btn-primary container" style="background-color: #46c23a;"  >Selling History</a>
+                  <a href="{% url 'history:buying_history' %}" class="btn btn-primary container" style="background-color: #46c23a;"  >Transactions History</a>
+                  {% comment %} <a href="{% url 'history:selling_history' %}" class="btn btn-primary container" style="background-color: #46c23a;"  >Selling History</a> {% endcomment %}
                 </div>
               </div>
               <!-- <div class="card cardCustom">

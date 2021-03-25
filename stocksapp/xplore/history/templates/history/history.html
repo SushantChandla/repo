@@ -10,129 +10,6 @@
 {% endblock %}
 
 {% block body_block %}
-<!-- <div class="topnav" id="myTopnav">
-    <img src="{% static "history/logo2.png" %}" alt="logo" style="float: left;height:45px;margin :10px;">
-    <a href="#" >Home</a>
-    <a href="#" >Profile</a>
-    <a href="#" style="float:right;">Logout</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
-
-    </a>
-  </div> -->
-
-  <!-- <form class="example" action="#" method="post">
-      <input type="text" placeholder="Username" name="username">
-      <button type="submit"><i class="fa fa-search"></i></button>
-  </form> -->
-
-<!-- 
-<div class="container">
-<div class="row">
-    <div class="column">
-        <div class="card">
-              <div style="width:100%;">
-                  <span style="font-size:20px; float:left;">24 stocks</span>
-                  <span style="font-size:20px; float:right;">recieved/sold</span>
-              </div>
-            <h3 style="text-align:center; font-size:20px;">WHEAT</h3><hr><hr>
-            <p><b>Timestamp: </b>09:25 am, 12-mar-2021</p>
-            <p><b>From/To: </b>username/institution</p>
-            <p><b>Price: </b>Rs. 250</p>
-            <p><b>Some info: </b>some additional info if required (backend can boys decide about this)</p>
-
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="column">
-        <div class="card">
-              <div style="width:100%;">
-                  <span style="font-size:20px; float:left;">24 stocks</span>
-                  <span style="font-size:20px; float:right;">recieved/sold</span>
-              </div>
-            <h3 style="text-align:center; font-size:20px;">WHEAT</h3><hr><hr>
-            <p><b>Timestamp:</b>09:25 am, 12-mar-2021</p>
-            <p><b>From/To</b>username/institution</p>
-            <p><b>Price</b>Rs. 250</p>
-            <p><b>Some info:</b>some additional info if required (backend can boys decide about this)</p>
-
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="column">
-        <div class="card">
-              <div style="width:100%;">
-                  <span style="font-size:20px; float:left;">24 stocks</span>
-                  <span style="font-size:20px; float:right;">recieved/sold</span>
-              </div>
-            <h3 style="text-align:center; font-size:20px;">WHEAT</h3><hr><hr>
-            <p><b>Timestamp:</b>09:25 am, 12-mar-2021</p>
-            <p><b>From/To</b>username/institution</p>
-            <p><b>Price</b>Rs. 250</p>
-            <p><b>Some info:</b>some additional info if required (backend can boys decide about this)</p>
-
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="column">
-        <div class="card">
-              <div style="width:100%;">
-                  <span style="font-size:20px; float:left;">24 stocks</span>
-                  <span style="font-size:20px; float:right;">recieved/sold</span>
-              </div>
-            <h3 style="text-align:center; font-size:20px;">WHEAT</h3><hr><hr>
-            <p><b>Timestamp:</b>09:25 am, 12-mar-2021</p>
-            <p><b>From/To</b>username/institution</p>
-            <p><b>Price</b>Rs. 250</p>
-            <p><b>Some info:</b>some additional info if required (backend can boys decide about this)</p>
-
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="column">
-        <div class="card">
-              <div style="width:100%;">
-                  <span style="font-size:20px; float:left;">24 stocks</span>
-                  <span style="font-size:20px; float:right;">recieved/sold</span>
-              </div>
-            <h3 style="text-align:center; font-size:20px;">WHEAT</h3><hr><hr>
-            <p><b>Timestamp: </b>09:25 am, 12-mar-2021</p>
-            <p><b>From/To: </b>username/institution</p>
-            <p><b>Price: </b>Rs. 250</p>
-            <p><b>Some info: </b>some additional info if required (backend can boys decide about this)</p>
-
-        </div>
-    </div>
-</div>
-</div> -->
-
-
-  <!-- <script>
-    function myFunction() {
-      var x = document.getElementById("myTopnav");
-      if (x.className === "topnav") {
-        x.className += " responsive";
-      } else {
-        x.className = "topnav";
-      }
-    }
-    </script> -->
-
-
-
-
-
-
-
-
     <div class="container">
         <div class="row justify-content-between">
             <div class="col container" style="flex:2.5">
@@ -156,7 +33,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      {% comment %} <tr>
                         <th scope="row">1</th>
                         <td>Wheat</td>
                         <td><span style="color: #46c23a;">12:53</span></td>
@@ -295,18 +172,28 @@
                         <td>Rs 5743.00</td>
                         <td style="text-align: center;">Sold
                         </td>
-                      </tr>   <tr>
-                        <th scope="row">1</th>
-                        <td>Wheat</td>
-                        <td><span style="color: #46c23a;">12:53</span></td>
-                        <td>Wheat Corporation</td>
-                        <td>26.00</td>
-                        <td>Rs 5743.00</td>
+                        </tr>  
+                        {% endcomment %}
+
+                      {% for item in historyList %}
+                       <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ item.stockName }}</td>
+                        <td><span style="color: #46c23a;">{{ item.Time }}</span></td>
+                        <td>{{ item.to_from }}n</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>Rs {{ item.price }}</td>
+                        {% if item.is_sold %}
                         <td style="text-align: center;">Sold
                         </td>
+                        {% else %}
+                         <td style="text-align: center;">Sold
+                        </td>
+                        {% endif %}
                       </tr>
 
-                     
+                     {% endfor %}
+
                     </tbody>
                   </table>
             

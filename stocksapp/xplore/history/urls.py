@@ -5,6 +5,6 @@ from . import views
 app_name = 'history'
 
 urlpatterns = [
-    url('buyinghistory/', views.UserHistoryBuying, name="buying_history"),
-    url('sellinghistory/', views.UserHistorySelling, name="selling_history"),
+    url('', views.UserHistory, name="buying_history"),
+    #url('sellinghistory/', views.UserHistorySelling, name="selling_history"),
 ]
