@@ -21,17 +21,21 @@ def HomePage(request):
         quantity=int(quantity)
         paymentAmount=request.POST.get("payment")
         stockt=Stocktype.objects.get(stockId=stockid_in)
-        orData=OrgStocks.objects.get(stockType=stockt)
-        if(quantity<orData.stockAmount):
-            price = PriceChange.objects.filter(is_linked=stockt)
-            
-            pyt =pytezos.using(key="edskRotpJzJHWX4zLsbuyfVnjeojJ3pmysGJEuXSvQWSvBqG1mS4x24TFjQhpiZQpKYNhzJT1DMfXbAE2YKVcuZE6fniECGeRB",shell="https://edonet.smartpy.io")
-            contr=pyt.contract("KT1QNvidZC8e5U2UNnv72LUpDtoKfhzu1dge")
-            orData.stockAmount-=quantity
-            orData.save()
-            contr.default(price=int(paymentAmount),quantity=int(quantity),stockType=stockid_in,to_from="Organization",username=username).inject()
-            print("updaeyde")
-
+        orData=OrgStocks.objects.filter(stockType=stockt)
+        if len(orData)>0:
+            orData=orData.first
+            if(quantity<orData.stockAmount):
+                price = PriceChange.objects.filter(is_linked=stockt)
+                
+                pyt =pytezos.using(key="edskRotpJzJHWX4zLsbuyfVnjeojJ3pmysGJEuXSvQWSvBqG1mS4x24TFjQhpiZQpKYNhzJT1DMfXbAE2YKVcuZE6fniECGeRB",shell="https://edonet.smartpy.io")
+                contr=pyt.contract("KT1QNvidZC8e5U2UNnv72LUpDtoKfhzu1dge")
+                orData.stockAmount-=quantity
+                orData.save()
+                contr.default(price=int(paymentAmount),quantity=int(quantity),stockType=stockid_in,to_from="Organization",username=username).inject()
+                print("updaeyde")
+            print("cant DO")
+        else :
+            print("cantDO")
 
     allorgStock=OrgStocks.objects.all()
     allorgData=[]
@@ -42,11 +46,8 @@ def HomePage(request):
             prices= PriceChange.objects.filter(is_linked=stoc)
             for itme in prices:
                 pricecha.append(itme)
-            #pricecha.sort(key=lambda item:item.updatedAt)
             newest_price=pricecha[-1].price
             lastPrice=1
-            # if pricecha.count >=2:
-            #     lastPrice=pricecha[1]
             percentincrease=(newest_price-lastPrice)*100/lastPrice
             
             allorgData.append({
@@ -60,17 +61,12 @@ def HomePage(request):
     alloptions=Stocktype.objects.all()
     return render(request, 'homeapp/index.html',{'allorgData':allorgData,'tops':allorgData[0:3],'allOptions':alloptions})
 
-# def StockBuy(request):
-#     print("Hednkjedneakncka")
 
     
     
     
 
 
-            # stockbuyform = StockBuyForm(data=request.POST)
-            # if stockbuyform.is_valid():
-            #     stockbuyform.save()
 
                 # quantity = stockbuyform.cleaned_data.get('fname')
                 # stockType = stockbuyform.cleaned_data.get('stocks')

@@ -12,6 +12,51 @@
 {% block body_block %}
 
 
+<!-- Modal send the stock which is clicked -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+          <!-- <p>Select Stock</p> -->
+          <form action="{% url 'profilepage:profilepage' %}", method="POST", id = "stockbuyform">
+          <label for="stocks">Select stock:</label>
+            {% csrf_token %}
+           <select id="stocks" name="stocks", form="stockbuyform">
+           
+           {% for item in allOptions %}
+            <option name='stocks' value={{ item.stockId }}>{{ item.stockName }}</option>
+
+           {% endfor %}
+          </select>
+        </div>
+          <label for="fname">Enter Quantity</label>
+          <input type="text" id="fname" name="fname" type='number'><br><br>
+          <label for="payment">Enter Payment Amount</label>
+          <input type="text" id="payment" name="payment" type='number'><br><br>
+          <button type="submit" value="submit" class="btn btn-primary container"   data-toggle="modal" data-target="#myModal"  style="background-color: #46c23a;"  >Buy</button>
+        </form>
+
+        <p>Trasation completion takes one mintue to complete</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
 <div class="container">
 
 <div class="row container justify-content-between" style="margin-top:10px;width: 100%;">
@@ -48,7 +93,7 @@
         <table class="table-class">
             <tr>
                 <td class="label-td">Username</td>
-                <td>username}}</td>
+                <td>{{username}}</td>
             </tr>
             <tr>
                 <td class="label-td">Name</td>
@@ -101,40 +146,26 @@
     </div>
     <div class="col">
         <p style="text-align: center;background-color:#bbc5e9;color: rgb(68, 14, 14);padding:4px;">Balance Info</p>
+        {% if stocksData|length > 0 %}
         <table>
+            {% for key,value in stocksData.items %}
             <tr>
-                <td class="stock-label-td">Stock A</td>
-                <td class="stock-td">250</td>
+                <td class="stock-label-td">{{ key }}</td>
+                <td class="stock-td">{{ value }}</td>
             </tr>
-            <tr>
-                <td class="stock-label-td">Stock B</td>
-                <td class="stock-td">250</td>
-            </tr>
-            <tr>
-                <td class="stock-label-td">Stock C</td>
-                <td class="stock-td">250</td>
-            </tr>
-            <tr>
-                <td class="stock-label-td">Stock D</td>
-                <td class="stock-td">250</td>
-            </tr>
-            <tr>
-                <td class="stock-label-td">Stock E</td>
-                <td class="stock-td">250</td>
-            </tr>
-            <tr>
-                <td class="stock-label-td">Stock F</td>
-                <td class="stock-td">250</td>
-            </tr>
-            <tr>
-                <td class="stock-label-td">Stock G</td>
-                <td class="stock-td">250</td>
-            </tr>
+            {% endfor %}
         </table>
+        {% else %}
+            <p> Nothing Here, New transactions usually take 1-2 mintue to progress in block chain, Also can use control+shift+r to refresh without cached Data </p>
+        {% endif %}
     </div>
+    
+</div>
+<a class="btn btn-primary container"  data-toggle="modal" data-target="#myModal"  style="background-color: #46c23a;"  >Sell Stocks</a>
+</div>
 
-</div>
-</div>
+
+
 <!-- <script src="{% static "profilepage/profile.js" %}"></script>
 <script>
     function openNav() {

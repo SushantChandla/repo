@@ -5,5 +5,5 @@ from . import views
 app_name = 'profilepage'
 
 urlpatterns = [
-    url('profile/', views.ProfilePage, name="profilepage"),
+    url('profile/', views.CustomerProfile, name="profilepage"),
 ]

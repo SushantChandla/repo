@@ -13,5 +13,5 @@ class UserCreateForm(forms.ModelForm):
 class UserProfileForm (forms.ModelForm):
     class Meta:
         fields = '__all__'
-        exclude = ['user',]
+        exclude = ['user','balance',]
         model = models.UserProfile
