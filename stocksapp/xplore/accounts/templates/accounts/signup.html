@@ -12,55 +12,58 @@
 
 <body>
 
-  <form method="POST">
-      {% csrf_token %}
-    <div class="container">
-      <h1>Register</h1>
-      <div style="text-align:center;">
-          <a href="{% url 'accounts:login' %}">or login here</a>
+    <form method="POST">
+        {% csrf_token %}
+      <div class="container">
+        <h1>Register</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <label for="{{ user_form.username.id_for_label }}">Username</label><br>
+        <p id="message" style="font-size:12px;color:rgb(30, 143, 2);display: none; ">*Required:150 characters or
+          fewer.Letters,digits and @/+/./-/_ only.<br></p>
+        <input type="text" name="{{user_form.username.html_name}}" id="username" placeholder="Username" onclick="Function()">
+        <label for="{{ user_form.email.id_for_label }}">Email Address</label>
+        <input type="text" placeholder="Email Address" name="{{user_form.email.html_name}}" id="email" required>
+        <label for="{{ profile_form.name.id_for_label }}">Name</label>
+        <input type="text" id="fname" name="{{profile_form.name.html_name}}" placeholder=" Name">
+        <label for="{{profile_form.date_of_birth.id_for_label}}">Date of Birth</label>
+       <input type="date" id="birthday" name="{{profile_form.date_of_birth.html_name}}" placeholder="Date of Birth">
+       <label for="{{profile_form.age.id_for_label}}">Age</label>
+       <input type="number" id="age" name="{{profile_form.age.html_name}}" placeholder="Age" min="18" max="100">
+       <label for="{{profile_form.gender.id_for_label}}">Gender</label>
+       <select id="Gender" name="{{profile_form.gender.html_name}}">
+           <option value="male" style="font-size:15px;border-right: none;color:rgba(97, 97, 97, 0.322);padding:3px;">
+            male</option>
+           <option value="female" style="font-size:15px;border: none;color:rgba(97, 97, 97, 0.322);padding:3px;">female
+           </option>
+           <option value="Other" style="font-size:15px;border: none;color:rgba(97, 97, 97, 0.322);padding:3px;">Other
+           </option>
+      </select>
+      <label for="{{profile_form.profession.id_for_label}}">Profession</label>
+        <select id="Usertype" name="{{profile_form.user_type.html_name}}">
+            <option value="shopkeeper" style="font-size:15px;border-right: none;color:rgba(97, 97, 97, 0.322);padding:3px;">
+              shopkeeper</option>
+            <option value="farmer" style="font-size:15px;border: none;color:rgba(97, 97, 97, 0.322);padding:3px;">farmer
+            </option>
+        </select>
+        <label for="{{profile_form.address.id_for_label}}">Address</label>
+        <input type="text" id="address" name="{{profile_form.address.html_name}}" placeholder="Address" required>
+        <label for="{{profile_form.city.id_for_label}}">City</label>
+        <input type="text" id="city" name="{{profile_form.city.html_name}}" placeholder="City" required>
+        <label for="{{profile_form.state.id_for_label}}">State</label>
+        <input type="text" id="state" name="{{profile_form.state.html_name}}" placeholder="State" required>
+        <label for="{{profile_form.pin_code.id_for_label}}">Pincode</label>
+        <input type="number" id="balance" name="{{profile_form.balance.html_name}}" placeholder="Balance" required>
+        <label for="{{profile_form.mobile_number.id_for_label}}">Mobile Number</label>
+        <input type="tel" id="aphone" name="{{profile_form.additional_mobile_number.html_name}}" placeholder="Additional Mobile Number" maxlength="10" pattern="[0-9]{10}">
+        <label for="{{user_form.password.id_for_label}}">Password</label>
+        <input type="password" placeholder="Enter Password" name="{{user_form.password.html_name}}" id="psw" required>
+        {{chain_form}}
+        <hr>
+        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+        <button type="submit" class="registerbtn">Register</button>
       </div>
-      <p>Please fill in this form to create an account.</p>
-      <hr>
-      <label for="{{ user_form.username.id_for_label }}">Username</label><br>
-      <p id="message" style="font-size:12px;color:rgb(30, 143, 2);display: none; ">*Required:150 characters or
-        fewer.Letters,digits and @/+/./-/_ only.<br></p>
-      <input type="text" name="{{user_form.username.html_name}}" id="username" placeholder="Username" onclick="Function()">
-      <label for="{{ user_form.email.id_for_label }}">Email Address</label>
-      <input type="text" placeholder="Email Address" name="{{user_form.email.html_name}}" id="email" required>
-      <label for="{{ profile_form.name.id_for_label }}">Name</label>
-      <input type="text" id="fname" name="{{profile_form.name.html_name}}" placeholder=" Name">
-      <label for="{{profile_form.date_of_birth.id_for_label}}">Date of Birth</label>
-     <input type="date" id="birthday" name="{{profile_form.date_of_birth.html_name}}" placeholder="Date of Birth">
-     <label for="{{profile_form.age.id_for_label}}">Age</label>
-     <input type="number" id="age" name="{{profile_form.age.html_name}}" placeholder="Age" min="18" max="100">
-     <label for="{{profile_form.gender.id_for_label}}">Gender</label>
-     <select id="Gender" name="{{profile_form.gender.html_name}}">
-         <option value="male" style="font-size:15px;border-right: none;color:rgba(97, 97, 97, 0.322);padding:3px;">
-          male</option>
-         <option value="female" style="font-size:15px;border: none;color:rgba(97, 97, 97, 0.322);padding:3px;">female
-         </option>
-         <option value="Other" style="font-size:15px;border: none;color:rgba(97, 97, 97, 0.322);padding:3px;">Other
-         </option>
-    </select>
-    <label for="{{profile_form.profession.id_for_label}}">Profession</label>
-    <input type="text" placeholder="Profession" name="{{profile_form.profession.html_name}}" id="profession">
-      <label for="{{profile_form.address.id_for_label}}">Address</label>
-      <input type="text" id="address" name="{{profile_form.address.html_name}}" placeholder="Address" required>
-      <label for="{{profile_form.city.id_for_label}}">City</label>
-      <input type="text" id="city" name="{{profile_form.city.html_name}}" placeholder="City" required>
-      <label for="{{profile_form.state.id_for_label}}">State</label>
-      <input type="text" id="state" name="{{profile_form.state.html_name}}" placeholder="State" required>
-      <label for="{{profile_form.pin_code.id_for_label}}">Pincode</label>
-      <input type="number" id="pincode" name="{{profile_form.pin_code.html_name}}" placeholder="Pin Code"  required>
-      <label for="{{profile_form.mobile_number.id_for_label}}">Mobile Number</label>
-      <input type="tel" id="phone" name="{{profile_form.mobile_number.html_name}}" placeholder="Mobile Number" pattern="[0-9]{10}" maxlength="10" required>
-     <label for="{{user_form.password.id_for_label}}">Password</label>
-      <input type="password" placeholder="Enter Password" name="{{user_form.password.html_name}}" id="psw" required>
-      <hr>
-      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-      <button type="submit" class="registerbtn">Register</button>
-    </div>
-  </form>
+    </form>
   <script>
     function Function() {
       document.getElementById("message").style.display = "initial";
