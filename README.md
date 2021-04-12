@@ -21,3 +21,9 @@ we have used Tezos to provide security to all the transactions. Since blockchain
 As the number of people investing in stocks are substantially high, it can be assumed that the financial stability will be present in he system.
 
 It will be totally new for the Indian agriculture to get investments this huge in size and it can substantially increase the production and thus solve the issue of POVERTY, HUNGER and ECONOMIC GROWTH.
+
+
+### Screenshots
+
+![](https://imgur.com/ZmBcxoF)
+![](https://imgur.com/Smids9X)
