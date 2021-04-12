@@ -25,5 +25,5 @@ It will be totally new for the Indian agriculture to get investments this huge i
 
 ### Screenshots
 
-![](https://imgur.com/ZmBcxoF)
-![](https://imgur.com/Smids9X)
+![](https://i.imgur.com/ZmBcxoF.png)
+![](https://i.imgur.com/Smids9X.png)
