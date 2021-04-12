@@ -3,9 +3,7 @@
 #### [Project Presentation](https://docs.google.com/presentation/d/1QNSJrsym6D4QN_GvRCkVAZ2E8FPz4clNvUPYH71-q7E/edit#slide=id.gc7b1274539_0_0)
 
 
-### ScreenShots
-
-The problem AgroBits solves
+### The problem AgroBits solves
 It is a well known problem, how small scale farmers suffer for credits, and thus lack of credits result in lack of production and downfall of their economic conditions.
 
 We created a website where people can buy and sell stocks. We have stocks of various crops. Currently seven different stocks i.e., wheat, paddy, soyabean, rajma, sugarcane, bajra and maize are available.
